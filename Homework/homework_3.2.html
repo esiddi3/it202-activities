@@ -10,10 +10,21 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+<style>
+    .lead{ margin: 10px} 
+    .form-row{margin: 10px} 
+    .food{margin: 10px}
+    .custom-select{margin: 10px}
+    .labl{margin:10px}
+    .name{margin:10px}
+
+</style>
+    
+    
 </head>
 
 <body>
-  <p> Eliyas Siddiqui</p>
+  <p class="name"> Eliyas Siddiqui</p>
     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -22,8 +33,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
  
          
-  <p class = "lead">
-      Email Address
+  <p class="lead">
+     Email Address
       </p>
 
       
@@ -39,18 +50,20 @@
             </div> 
     
   
-
+  <label class="labl"> 
   <input type="radio" name='whereEating' value="Eat In ">Eat In     <br>
   <input type="radio" name='whereEating' value="CarryOut">CarryOut  <br>
   <input type="radio" name='whereEating' value="Delivery">Delivery   <br>
-      
+    </label>
     
-  <p>Food Type </p>  
-  <select class ="custom-select">
-
-      <option value="foodType" >Burger</option>
-      <option value="foodType" >Pizza</option>
-      <option value="foodType" >Indian</option>
+  <p class="food">Food Type </p>  
+  <select class ="custom-select"> 
+      <div class = "col-12">
+      <option value="foodType" class="custom-select" >Burger</option>
+      <option value="foodType" class="custom-select" >Pizza</option>
+      <option value="foodType" class="custom-select">Indian</option>
+    </div>
+    
 
   </select>
 
