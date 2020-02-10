@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Activity 5.1 (IT 202)</title>
+</head>
+
+<body>
+ 
+<script>
+    
+  
+ 
+let apiEndpoint= "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY";
+    fetch(apiEndpoint)
+    .then(response => {return response.json()}) // JSON handler to loop through the array, and console.log each record 
+    .then(json => console.log(json)) // console.log each record
+    .catch(err =>alert(err))
+    
+   .then(json => {
+        let h1 =document.createElement("h1");
+        h1.textcontent=json.title;
+        document.body.append(h1);
+        
+     var para1 = document.createElement("date");
+     var para2 = document.createElement("explanation");
+     var x = document.createElement("IMG");
+      
+    })
+                     
+               
+    </script>
+ 
+
+    
+</body>
+
+
+</html>
