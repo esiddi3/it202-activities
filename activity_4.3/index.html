@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <p>Hi</p>
+ 
 <script>
     
   
@@ -17,20 +17,17 @@ let apiEndpoint= "https://data.cityofchicago.org/resource/xzkq-xp2w.json?$LIMIT=
     .then(json => console.log(json)) // console.log each record
     .catch(err =>alert(err))
     
-   .then(json => {for (let vec of json){
+      fetch(apiEndpoint)
+    .then(response => {return response.json()}) // JSON handler to loop through the array, and console.log each record 
+    
+ .then(json => {for (let val of json){
                      
-                     var par =document.createElement("p");
-                      par.innerContent = val["name"];
-                      par.innerConetent = val["department"];
-                      par.innerContent = val["job_titles"];
+                     var par =document.createElement("p"); 
+                      par.textContent = val["name"] + "/ " + val["department"] + "/" + val["job_titles"];
+                      //par.textConetent = val["department"];
+//                       //par.textContent = val["job_titles"];
                       document.body.appendChild(par);
-                     
-                  //let clone =document.querySelector(".template");
-                   //  clone.classList.remove("template");
-                  //   clone.firstElementChild.firstElementChild.innerContent =val["name"];
-                   //  clone.firstElementChild.firstElementChild.nextElementSibling.innerContent =val["department"];
-                  //   clone.firstElementChild.firstElementChild.nextElementSibling.nextElementSibling.innerContent =val["annual_salary"];
-                   //  document.body.appendChild(clone);
+
                      
                   }
                   })

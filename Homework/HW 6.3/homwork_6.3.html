@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<canvas id="myCanvas" width="300" height="150" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+<script>
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+
+
+ctx.beginPath();  
+ctx.fillStyle = "black";   
+ctx.fillRect(0, 0, c.width, c.height);         
+ctx.lineWidth = "5";
+ctx.strokeStyle = "green";  // Green path
+ctx.font = "30px Arial";
+ctx.fillStyle = "red";
+ctx.fillText("657249252", 10, 50);
+
+ctx.beginPath();
+ctx.strokeStyle = "purple";  // Purple path
+ctx.moveTo(50, 0);
+ctx.lineTo(150, 130);            
+ctx.stroke();  // Draw it
+
+ctx.beginPath();
+ctx.strokeStyle = "blue";  // Purple path
+ctx.moveTo(200, 0);
+ctx.lineTo(200, 100);          
+ctx.stroke();  // Draw it 
+
+ctx.beginPath();
+ctx.strokeStyle = "blue";  // Purple path
+ctx.moveTo(200, 0);
+ctx.lineTo(300, 0);         
+ctx.stroke();  // Draw it 
+
+
+ctx.beginPath();
+ctx.strokeStyle = "blue";  // Purple path
+ctx.moveTo(200, 100);
+ctx.lineTo(300, 100);         
+ctx.stroke();  // Draw it 
+
+
+ctx.beginPath();
+ctx.strokeStyle = "blue";  // Purple path
+ctx.moveTo(200, 50);
+ctx.lineTo(300, 50);         
+ctx.stroke();  // Draw it 
+
+//ctx.moveTo(200, 0);
+//ctx.lineTo(200, 0);   
+
+</script>
+
+</body>
+</html>

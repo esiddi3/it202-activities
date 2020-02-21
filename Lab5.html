@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    
+    <h2>Input type="text"</h2>
+    <input type="text" id="make" value="CHEV"></input> <!-- this is what you reference later with the ID --> 
+
+    <h2>Textarea</h2>
+    <textarea></textarea>
+
+    <h2>Input type="radio"</h2>
+    <input type="radio" name="rad1" value="A"> A<br>
+    <input type="radio" name="rad1" value="B"> B<br> 
+
+    <h2>Select</h2>
+    <select>
+      <option></option>
+      <option>C</option>
+      <option>D</option>
+      <option>E</option> 
+    </select>
+    <h2>Input type="checkbox"</h2>
+    <input type="checkbox" name="ck1" value="F"> F<br>       
+    <input type="checkbox" name="ck1" value="G"> G<br>       
+    <input type="checkbox" name="ck1" value="H"> H<br>  
+
+    <button id="search">Find towed vehicles</button>
+
+  </head>
+
+  <body>
+      
+    <script>
+      // endpoint variable
+      let apiEndpoint = "https://data.cityofchicago.org/resource/ygr5-vcbg.json";
+      
+
+document.querySelector("#search") //event listener, name of the event and a function below, when search is pressed
+        .addEventListener("click",
+                          
+        (e) =>{                                    //defining the function e
+          console.log(e)                                   //copy pasted
+          let url = apiEndpoint + "?make=" +      // the url + the ?make + value of make 
+          document.querySelector("#make").value; //finds the value of the veichle input box; #make; so..https://data.cityofchicago.org/resource/ygr5-vcbg.json?make=FORD
+          console.log(url);
+      
+          fetch(url)
+          .then ( response => {return response.json()} )
+          .then ( json => console.log(json) )
+          .catch(err => alert(err)) 
+    
+})
+      
+      //let url = apiEndpoint + "?make=" +
+        //  document.querySelector("#make").value;
+        //console.log(url);
+      
+    //  This is what you can do first to find the article of interest 
+    //  fetch(url)
+      //.then ( response => {return response.json()} )
+      //.then ( json => console.log(json) )
+      //.catch(err => alert(err)) 
+
+        
+        
+        
+        
+
+
+       
+      
+
+
+
+
+
+    </script>
+  </body>
+</html>

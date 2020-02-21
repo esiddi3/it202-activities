@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Activity 6.0 (IT 202)</title>
+    
+   
+</head>
+
+<body>
+
+
+    
+<!-- Include dexie.js -->
+    <!-- a library for using indexedDB, defing stores, indicate values o be indexed, trans are asynchronous --> 
+<script 
+        src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+
+<!-- Some HTML for the log window -->
+
+
+<!-- Just a simple log function... --> 
+<script>
+ var db = new Dexie("MyFriendDB"); // Database , store data persistent data
+db.version(1).stores({
+	friends: '++id,name,age',
+    enemies: '++id,name'
+});
+    
+    
+	//db.friends.add({name: "Foo", age: 42, hometown: "Chicago"});
+    
+    db.friends.where("age").equals(22).toArray()
+    .then (data => console.log(data))
+</script>
+    
+    
+    
+    
+    
+
+    </body>
+</html>
+
+
+
+
+
+
+
+

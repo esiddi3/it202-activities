@@ -3,28 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <title>Activity 5.1 (IT 202)</title>
+    <style> 
+        IMG {width:100%}; 
+    </style> <!-- adding a style element to the image where the width is displayed at 100 wrt screen --> 
 </head>
 
 <body>
  
 <script>
     
-  
- 
-let apiEndpoint= "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY";
+let apiEndpoint= "https://api.nasa.gov/planetary/apod?api_key=yjGHvalcaYIrqeFcTi4h5cGeXX3B5qyjWVrqueQr";
     fetch(apiEndpoint)
     .then(response => {return response.json()}) // JSON handler to loop through the array, and console.log each record 
-    .then(json => console.log(json)) // console.log each record
-    .catch(err =>alert(err))
+    //.then(json => console.log(json)) // console.log each record, comment these two out afterwards reading the stuff
+   // .catch(err =>alert(err))
     
    .then(json => {
-        let h1 =document.createElement("h1");
-        h1.textcontent=json.title;
+        let h1 =document.createElement("h1"); //taking about title of pic
+        h1.textContent=json.title;
         document.body.append(h1);
+       
+        let IMG =document.createElement("IMG"); //img of pic
+        IMG.setAttribute("src", json.hdurl);
+        document.body.append(IMG);
         
-     var para1 = document.createElement("date");
-     var para2 = document.createElement("explanation");
-     var x = document.createElement("IMG");
+        let p= document.createElement("p"); //explainatio of pic
+        p.textContent =json.explation;
+        document.body.append(p);
+        
+
       
     })
                      
