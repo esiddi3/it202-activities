@@ -32,15 +32,15 @@
 <aside class="mdc-drawer mdc-drawer--modal">
     <div class="mdc-drawer__content">
       <nav class="mdc-list">
-        <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page">
+        <a class="mdc-list-item mdc-list-item--activated" href="#home" aria-current="page">
           <i class="material-icons mdc-list-item__graphic" aria-hidden="true">home</i>
           <span class="mdc-list-item__text">Home</span>
         </a>
-        <a class="mdc-list-item" href="#">
+        <a class="mdc-list-item" href="#data">
           <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bar_chart</i>
           <span class="mdc-list-item__text">Data</span>
         </a>
-        <a class="mdc-list-item" href="#">
+        <a class="mdc-list-item" href="#about">
           <i class="material-icons mdc-list-item__graphic" aria-hidden="true">info</i>
           <span class="mdc-list-item__text">About</span>
         </a>
@@ -98,18 +98,26 @@
     
     const drawer = mdc.drawer.MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
         
-        
+
+    const hideViews = ()=> {
+
+      document.querySelectorAll('div.view').forEach( (item) =>{
+        item.style.display = "none";
+      })
+
+    }
+
     document.querySelector(".mdc-top-app-bar__navigation-icon")
         .addEventListener("click",
             (e)=> {drawer.open = true;}             
                          
-                         );     
+            );     
         
         
    document.querySelectorAll('aside.mdc-drawer a.mdc-list-item')
        .forEach(item => {
   item.addEventListener('click', event => {
-        
+         
       let target = item.getAttribute("href");
       document.querySelector(target).style.display ="block";
       
