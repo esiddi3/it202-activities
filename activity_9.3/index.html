@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Activity 9.3</title>
+      
+<!--     Quick Start (CDN) -->
+  <link href="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script>
+<!--  Material Icons from Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+  <style>
+      .template{display: none;}
+    </style>
+      
+      
+  </head>
+  <body>
+
+  <!--     GRAF (Graffiti Removal Request), SFD (Street Light Out Complaint) and CSF (Consumer Fraud Complaint) Buttons  --> 
+    <button id= "graf" data-category-code="graf" class="mdc-button mdc-button--raised">
+      <div class="mdc-button__ripple"></div>
+      <span class="mdc-button__label">GRAF (Graffiti Removal Request)</span>
+    </button>
+      
+    <button id= "sfd" data-category-code="sfd" class="mdc-button mdc-button--raised">
+      <div class="mdc-button__ripple"></div>
+      <span class="mdc-button__label">SFD (Street Light Out Complaint)</span>
+    </button>
+      
+    <button id= "csf" data-category-code="csf" class="mdc-button mdc-button--raised">
+      <div class="mdc-button__ripple"></div>
+      <span class="mdc-button__label">CSF (Consumer Fraud Complaint)</span>
+    </button>
+      
+
+    <div id="data">
+
+     <ul class="mdc-list">
+
+      <!-- <li class="mdc-list-item">
+        <span class="mdc-list-item__text">Single-line item</span>
+      </li>
+      <li class="mdc-list-item">
+        <span class="mdc-list-item__text">Single-line item</span>
+      </li> -->
+    </ul> 
+
+      <!-- <li class=" template mdc-list-item" tabindex="0">
+      <span class="mdc-list-item__text">Single-line item</span>
+      </li> not needed -->
+
+    <li class="template mdc-list-item mdc-ripple-upgraded" >
+      <span class="mdc-list-item__graphic material-icons" aria-hidden="true">folder</span>
+      <span class="mdc-list-item__text">
+        <span class="mdc-list-item__primary-text">Cat Photos</span>
+        <span class="mdc-list-item__secondary-text">22 Dec 2017</span>
+        </span>
+        <span class="mdc-list-item__meta material-icons" aria-hidden="true">info</span>
+        
+      </li>
+
+
+
+
+
+   </div>
+
+   <script>
+   const apiEndpoint= "https://data.cityofchicago.org/resource/v6vf-nfxy.json?";   
+
+   document.querySelectorAll(".mdc-button").forEach( (node) => {
+     node.addEventListener("click", (e)=>{
+       //console.log(e);
+       let categoryCode= node.getAttribute("data-category-code");
+       let url = apiEndpoint + "$LIMIT=5&sr_short_code=" + categoryCode.toUpperCase();
+       //console.log(url)
+
+      let dataList =  document.querySelector("div#data ul.mdc-list");
+
+      fetch(url)
+        .then ( (response) => {
+          //console.log(response);
+
+          return response.json();
+        })
+        .then ( (json)=> {
+
+          //empty the list
+          while (dataList.firstChild) {
+              dataList.removeChild(dataList.firstChild);
+          }
+
+
+          for (let record of json) {
+            //console.log(json); //
+            //console.log(record);
+            //clone template
+            let clone = document.querySelector("div#data  li.template")
+            .cloneNode(true);
+
+            //remove the class template from element
+
+            clone.classList.remove("template");
+
+            //add attribute
+            clone.setAttribute["data-sr_number", record["sr_number"]];
+            //console.log(clone) //
+
+            //update value
+            clone.querySelector(".mdc-list-item__primary-text").textContent = record['sr_number'];
+            
+            clone.querySelector(".mdc-list-item__secondary-text").textContent = record['street_address'];
+
+            //append to list
+
+            document.querySelector("div#data ul.mdc-list").appendChild(clone);
+
+        }
+
+        })
+
+     });
+    
+   });
+
+  //  sr_short_code=311IOC
+
+
+    </script>    
+      
+      
+      
+      
+  </body>
+    
+    
+</html>
