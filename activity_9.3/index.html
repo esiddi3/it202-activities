@@ -38,7 +38,7 @@
 
     <div id="data">
 
-     <ul class="mdc-list">
+     <ul class="mdc-list mdc-list--two-line mdc-list--avatar-list">
 
       <!-- <li class="mdc-list-item">
         <span class="mdc-list-item__text">Single-line item</span>
@@ -70,6 +70,8 @@
 
    <script>
    const apiEndpoint= "https://data.cityofchicago.org/resource/v6vf-nfxy.json?";   
+
+   const categoryIcons= {"GRAF": "extension", "SFD": "face", "CSF":"favorite"}
 
    document.querySelectorAll(".mdc-button").forEach( (node) => {
      node.addEventListener("click", (e)=>{
@@ -113,6 +115,11 @@
             clone.querySelector(".mdc-list-item__primary-text").textContent = record['sr_number'];
             
             clone.querySelector(".mdc-list-item__secondary-text").textContent = record['street_address'];
+
+
+            let icon = categoryIcons[record["sr_short_code"]];
+              
+              clone.querySelector(".mdc-list-item__graphic.material-icons").textContent = icon;
 
             //append to list
 
